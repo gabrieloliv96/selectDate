@@ -1,0 +1,16 @@
+_selectDate(BuildContext context) async {
+    final DateTime? selected = await showDatePicker(
+      context: context,
+      initialDate: selectedDate.subtract(const Duration(days: 6570)),
+      firstDate: DateTime(1920),
+      lastDate: DateTime(2023),
+      locale: const Locale("pt"),
+    );
+    String formattedDate = DateFormat('dd/MM/yyyy').format(selected!);
+    if (selected != selectedDate) {
+      setState(() {
+        dateinput.text = formattedDate;
+        _controller.setNasc(formattedDate);
+      });
+    }
+  }
